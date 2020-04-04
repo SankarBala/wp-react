@@ -222,16 +222,20 @@ add_action( 'manage_pages_custom_column', 'posts_custom_column_views' );
 
 
 
-register_rest_field( ['post','page'], 'read',
+register_rest_field( ['post','page'], 'viewed',
     array(
-		'get_callback'    => function(){
-			$count = get_post_meta( get_the_ID(), 'post_views_count', true );
-			$key = 'post_views_count';
-			$post_id = get_the_ID();
-			$count = (int) get_post_meta( $post_id, $key, true );
-			$count++;
-			update_post_meta( $post_id, $key, $count );
-			return $count;
+		'get_callback'    => function($object){	
+			if(preg_match("/[a-z]+\/[1-9]+/",$_SERVER['REQUEST_URI'])){
+				$count = get_post_meta( get_the_ID(), 'post_views_count', true );
+				$key = 'post_views_count';
+				$post_id = get_the_ID();
+				$count = (int) get_post_meta( $post_id, $key, true );
+				$count++;
+				update_post_meta( $post_id, $key, $count );
+				return $count;
+			}else {
+				return get_post_meta( get_the_ID(), 'post_views_count', true );
+			};
 		},
         'update_callback' => null,
         'schema'          => null,
