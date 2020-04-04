@@ -143,9 +143,9 @@ function theme_widgets_init() {
 		) );
 
 		register_sidebar( array(
-			'name'          => esc_html__( 'Category widget 4', 'wp_react_theme' ),
-			'id'            => 'category-4',
-			'description'   => esc_html__( 'Category widget 4', 'wp_react_theme' ),
+			'name'          => esc_html__( 'Category widget', 'wp_react_theme' ),
+			'id'            => 'category',
+			'description'   => esc_html__( 'Category widget', 'wp_react_theme' ),
 			'before_widget' => '',
 			'after_widget'  => '',
 			'before_title'  => '',
@@ -153,9 +153,9 @@ function theme_widgets_init() {
 		) );
 
 		register_sidebar( array(
-			'name'          => esc_html__( 'Page start widget 5', 'wp_react_theme' ),
+			'name'          => esc_html__( 'Page start widget', 'wp_react_theme' ),
 			'id'            => 'page-start',
-			'description'   => esc_html__( 'Page start widget 5', 'wp_react_theme' ),
+			'description'   => esc_html__( 'Page start widget', 'wp_react_theme' ),
 			'before_widget' => '',
 			'after_widget'  => '',
 			'before_title'  => '',
@@ -163,9 +163,9 @@ function theme_widgets_init() {
 		) );
 		
 		register_sidebar( array(
-			'name'          => esc_html__( 'Page middle widget 5', 'wp_react_theme' ),
+			'name'          => esc_html__( 'Page middle widget', 'wp_react_theme' ),
 			'id'            => 'page-middle',
-			'description'   => esc_html__( 'Page middle widget 5', 'wp_react_theme' ),
+			'description'   => esc_html__( 'Page middle widget', 'wp_react_theme' ),
 			'before_widget' => '',
 			'after_widget'  => '',
 			'before_title'  => '',
@@ -173,9 +173,9 @@ function theme_widgets_init() {
 		) );
 
 		register_sidebar( array(
-			'name'          => esc_html__( 'Page end widget 5', 'wp_react_theme' ),
+			'name'          => esc_html__( 'Page end widget', 'wp_react_theme' ),
 			'id'            => 'page-end',
-			'description'   => esc_html__( 'Page end widget 5', 'wp_react_theme' ),
+			'description'   => esc_html__( 'Page end widget', 'wp_react_theme' ),
 			'before_widget' => '',
 			'after_widget'  => '',
 			'before_title'  => '',
@@ -194,13 +194,13 @@ function get_post_view() {
     return "$count";
 }
 
-function set_post_view() {
+ function set_post_view() {
     $key = 'post_views_count';
     $post_id = get_the_ID();
     $count = (int) get_post_meta( $post_id, $key, true );
     $count++;
     update_post_meta( $post_id, $key, $count );
-}
+ }
 
 function posts_column_views( $columns ) {
     $columns['post_views'] = 'Views';
@@ -212,6 +212,34 @@ function posts_custom_column_views( $column ) {
         echo get_post_view();
     }
 }
+
+
+add_filter( 'manage_posts_columns', 'posts_column_views' );
+add_action( 'manage_posts_custom_column', 'posts_custom_column_views' );
+
+add_filter( 'manage_pages_columns', 'posts_column_views' );
+add_action( 'manage_pages_custom_column', 'posts_custom_column_views' );
+
+
+
+register_rest_field( ['post','page'], 'read',
+    array(
+		'get_callback'    => function(){
+			$count = get_post_meta( get_the_ID(), 'post_views_count', true );
+			$key = 'post_views_count';
+			$post_id = get_the_ID();
+			$count = (int) get_post_meta( $post_id, $key, true );
+			$count++;
+			update_post_meta( $post_id, $key, $count );
+			return $count;
+		},
+        'update_callback' => null,
+        'schema'          => null,
+    )
+);
+
+
+
 
 // Additional api to get menu, sidebar and widget data which is not provided to wordpress;
 
