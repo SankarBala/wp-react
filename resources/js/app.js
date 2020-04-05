@@ -1,15 +1,8 @@
-import React, {Component, Fragment} from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./bootstrap";
+import Index from "./components/Index";
 
-class App extends Component {
-    render(){
-        return(
-            <Fragment>
-                Welcome to wordpress react theme.
-            </Fragment>
-        );
-    }
- 
-}
+ReactDOM.render(<Index />, document.getElementById("root"));
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
