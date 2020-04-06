@@ -18,13 +18,13 @@
 
 	<!-- Register service worker -->
 	<script>
-		if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function() {
-        navigator.serviceWorker
-          .register("serviceWorker.js")
+	// 	if ("serviceWorker" in navigator) {
+    //   window.addEventListener("load", function() {
+    //     navigator.serviceWorker
+    //       .register("serviceWorker.js")
          
-      });
-    }
+    //   });
+    // }
 	</script>
 	    <p id="nstatus"></p>
     <script>
@@ -37,12 +37,12 @@
 
         var option = {
             body: "This is body",
-            icon: "favicon.ico",
+            icon: "<?php bloginfo('template_directory'); ?>/favicon.ico",
             vibrate: [1000, 500, 1000],
             data: { primayKey: 1 },
             actions: [
-                { action: 'explore', title: 'got the site', icon: '/photo.jpg' },
-                { action: 'close', title: 'no thanks', icon: '/photo.jpg' },
+                { action: 'explore', title: 'got the site', icon: '<?php bloginfo('template_directory'); ?>/screenshot.jpg' },
+                { action: 'close', title: 'no thanks', icon: '<?php bloginfo('template_directory'); ?>/screenshot.jpg' },
             ]
         };
 
