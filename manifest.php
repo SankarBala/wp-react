@@ -26,7 +26,7 @@
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": ".",
+  "start_url": "serviceWorker.php",
   "display": "standalone",
   "background_color": "#ff0000",
   "theme_color": "#2F3BA2"
