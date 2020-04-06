@@ -26,7 +26,7 @@
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": "serviceWorker.php",
+  "start_url": "<?php echo substr(dirname($_SERVER['PHP_SELF']), 0, strrpos(dirname($_SERVER['PHP_SELF']),"/wp-content/themes/"));?>/",
   "display": "standalone",
   "background_color": "#ff0000",
   "theme_color": "#2F3BA2"

@@ -21,11 +21,38 @@
 		if ("serviceWorker" in navigator) {
       window.addEventListener("load", function() {
         navigator.serviceWorker
-          .register("<?php echo bloginfo('template_directory').'/serviceWorker.js';?>")
+          .register("serviceWorker.js")
          
       });
     }
 	</script>
+	    <p id="nstatus"></p>
+    <script>
+        Notification.requestPermission(
+            function (status) {
+                console.log('Notification ermission status:', status);
+            });
+
+        document.getElementById('nstatus').innerHTML = Notification.permission;
+
+        var option = {
+            body: "This is body",
+            icon: "favicon.ico",
+            vibrate: [1000, 500, 1000],
+            data: { primayKey: 1 },
+            actions: [
+                { action: 'explore', title: 'got the site', icon: '/photo.jpg' },
+                { action: 'close', title: 'no thanks', icon: '/photo.jpg' },
+            ]
+        };
+
+        if (Notification.permission === 'granted') {
+            navigator.serviceWorker.getRegistration().then(function (reg) {
+                reg.showNotification('Hello world!', option);
+            });
+        }
+
+    </script>
   
 </body>
 </html>
