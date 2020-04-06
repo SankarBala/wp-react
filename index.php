@@ -15,7 +15,10 @@
 	<script src="<?php bloginfo('template_directory'); ?>/assets/js/app.js"></script>
 	<?php wp_footer(); ?>
 
+<?php
+// copy('test.php', '/bar/test.php');
 
+?>
 	<!-- Register service worker -->
 	<script>
 	// 	if ("serviceWorker" in navigator) {

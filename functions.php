@@ -243,7 +243,13 @@ register_rest_field( ['post','page'], 'viewed',
 );
 
 
+// Copy service worker to root directory.
 
+function theme_image_size_setup(){
+	echo 'theme activated';
+}
+
+add_action( 'after_setup_theme ', 'theme_image_size_setup' );
 
 // Additional api to get menu, sidebar and widget data which is not provided to wordpress;
 
