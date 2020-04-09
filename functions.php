@@ -1,4 +1,6 @@
 <?php
+
+
 add_theme_support('title-tag');
 
 add_theme_support('post-thumbnails');
@@ -243,16 +245,18 @@ register_rest_field( ['post','page'], 'viewed',
 );
 
 
-// Copy service worker to root directory.
-
-function theme_image_size_setup(){
-	echo 'theme activated';
-}
-
-add_action( 'after_setup_theme ', 'theme_image_size_setup' );
-
 // Additional api to get menu, sidebar and widget data which is not provided to wordpress;
 
 include "api/widget.php";
 include "api/menu.php";
 
+
+
+
+// Copy service worker to root directory.
+
+function copy_serviceWorker_filesTo_instalation_dir () {
+   copy(dirname(__FILE__).'/wpServiceWorker.js', './../wpServiceWorker.js');
+}
+
+add_action('after_switch_theme', 'copy_serviceWorker_filesTo_instalation_dir');
