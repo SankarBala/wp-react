@@ -233,4 +233,5 @@ add_action( 'rest_api_init', function () {
 		'methods'  => 'GET',
 		'callback' => 'wp_api_v2_menu_get_all_locations',
 	) );
+   
 } );

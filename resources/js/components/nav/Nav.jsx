@@ -1,16 +1,29 @@
 import React, { Component, Fragment } from "react";
-import './Nav.scss';
+import { BrowserRouter as Router, Link, NavLink } from "react-router-dom";
+import config from './../../config';
+import "./Nav.scss";
 
 class Nav extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    return <Fragment>
+    return (
+      <Fragment>
         <nav className="row">
-            Nav
+
+        <div className="col-12">
+          {config.jsonUrl}
+        </div>
         </nav>
-    </Fragment>;
+      </Fragment>
+    );
   }
 }
 export default Nav;
+
+const NavMenu = () => {
+  return (
+      sdfis
+  );
+}
