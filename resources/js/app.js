@@ -5,7 +5,7 @@ import "./bootstrap";
 import Index from "./components/Index";
 import Store from "./redux_store/store";
 import { Provider } from "react-redux";
-import config from "./config";
+import {siteUrl} from "./config";
 
 // if ("serviceWorker" in navigator) {
 //   window.addEventListener("load", function() {
@@ -16,7 +16,7 @@ import config from "./config";
 
 ReactDOM.render(
   <Provider store={Store}>
-    <Router basename={config.siteUrl}>
+    <Router basename={siteUrl}>
       <Index />
     </Router>
   </Provider>,

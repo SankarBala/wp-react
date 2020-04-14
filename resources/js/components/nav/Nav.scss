@@ -1,6 +1,202 @@
 nav {
-    background-color: #366f99;
-    padding: 8px;
-    height: auto;
-    border-top: 1px solid black;
+  position: relative;
+  button {
+    cursor: pointer;
   }
+}
+
+.sm-nav {
+  color: white;
+  padding: 6px 0px;
+}
+
+.sm-nav button {
+  color: black;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+#menu {
+  position: absolute;
+  display: none;
+  top: 55px;
+  padding: 0;
+  list-style-type: none;
+  width: 31vw;
+  background: #4e4e4e;
+  border-bottom: 0px solid transparent;
+  min-height: 50px;
+  z-index: 9999;
+  font-size: 2.3vw;
+}
+
+#menu li {
+  border-top: 1px solid #605b5b;
+  border-bottom: 1px solid #2b2a2a;
+  position: relative;
+}
+
+#menu li:last-child {
+  border-right: none;
+}
+
+#menu li:first-child {
+  border-left: none;
+}
+
+#menu li a {
+  color: #fff;
+  text-decoration: none;
+  background: #4e4e4e;
+  padding: 10px 10px;
+  display: block;
+  transition: 0.2s all ease;
+}
+
+#menu li a:hover {
+  background: orange;
+}
+
+#menu li ul {
+  width: 32vw;
+  list-style-type: none;
+  padding: 8px 0px;
+  position: absolute;
+  left: -99999px;
+}
+
+#menu li:hover ul {
+  left: 32vw;
+  top: -9px;
+}
+
+#menu li ul li {
+  padding: 0, 6px;
+  float: none;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid #605b5b;
+  border-bottom: 1px solid #2b2a2a;
+  white-space: nowrap;
+  position: relative;
+  z-index: 9999;
+}
+
+#menu li ul li ul {
+  width: 28vw;
+  position: absolute;
+  display: none;
+}
+
+#menu li ul li:hover ul {
+  display: block;
+  top: -9px;
+  left: 33vw;
+}
+
+#menu li:nth-last-child(-n + 2) ul li:hover ul {
+  top: -9px;
+}
+
+.haschild::after {
+  content: "\25B6";
+  float: right;
+}
+
+@media screen and (min-width: 768px) {
+  #menu {
+    display: block;
+    position: sticky;
+    top: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    background: #4e4e4e;
+    border-bottom: 5px solid orange;
+    min-height: 50px;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+
+  #menu li {
+    float: left;
+    border-right: 1px solid #605b5b;
+    border-left: 1px solid #2b2a2a;
+    position: relative;
+  }
+
+  #menu li:last-child {
+    border-right: none;
+  }
+
+  #menu li:first-child {
+    border-left: none;
+  }
+
+  #menu li a {
+    color: #fff;
+    text-decoration: none;
+    background: #4e4e4e;
+    padding: 10px 20px;
+    display: block;
+    transition: 0.2s all ease;
+  }
+
+  #menu li a:hover {
+    background: orange;
+  }
+
+  #menu li ul {
+    list-style-type: none;
+    padding: 8px 0px;
+    position: absolute;
+    left: -99999px;
+  }
+
+  #menu li:hover ul {
+    left: 0;
+    top: 45px;
+  }
+
+  #menu li ul li {
+    float: none;
+    border-right: none;
+    border-left: none;
+    border-top: 1px solid #605b5b;
+    border-bottom: 1px solid #2b2a2a;
+    width: 220px;
+    position: relative;
+  }
+
+  #menu li ul li ul {
+    position: absolute;
+    top: -999999px;
+  }
+
+  #menu li ul li:hover ul {
+    top: -9px;
+    left: 220px;
+  }
+
+  #menu li:nth-last-child(-n + 2) ul li:hover ul {
+    top: -9px;
+    left: -220px;
+  }
+
+  .haschild::after {
+    content: none;
+  }
+
+  #menu li ul li .haschild::after {
+    content: "\25b6";
+    float: right;
+  }
+
+  #menu li:nth-last-child(-n + 2) ul li .haschild::after {
+    content: "\25c0";
+    float: left;
+    position: absolute;
+    left: 0px;
+  }
+}
