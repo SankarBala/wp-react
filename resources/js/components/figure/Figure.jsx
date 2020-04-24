@@ -17,7 +17,6 @@ import config from "../../config";
 export default function Figure(props) {
   return (
     <Router>
-    dfg
     </Router>
   );
 }

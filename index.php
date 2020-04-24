@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/assets/css/app.css" />
     <link rel="manifest" href="<?php bloginfo('template_directory'); ?>/manifest.php" />
-
+   
     <!-- These meta is only for control frontend technolozy. -->
 
 <?php
@@ -58,6 +58,7 @@ if ($object->taxonomy) {
     
     <script src="<?php bloginfo('template_directory'); ?>/assets/js/app.js"></script>
     <?php wp_footer(); ?>
+    
 </body>
 
 </html>

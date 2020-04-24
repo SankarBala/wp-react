@@ -103,10 +103,10 @@ nav {
   content: none;
 }
 
-li.haschild>a::after {
-  content: "\25B7";
-  float: right;
-}
+  li.haschild>a::after {
+    content: "\25B7";
+    float: right;
+  }
 
 @media screen and (min-width: 768px) {
   #menu {
@@ -188,20 +188,20 @@ li.haschild>a::after {
     left: -220px;
   }
 
-  .haschild a::after {
-    content: none;
-  }
-  
   li.haschild a::after {
     content: none;
   }
 
-  #menu li ul li.haschild a::after {
+  #menu li ul li.haschild > a::after {
     content: "\25B7";
     float: right;
   }
 
-  #menu li:nth-last-child(-n + 2) ul li.haschild a::after {
+  #menu li ul li ul li a::after {
+    content: none;
+  }
+
+  #menu li:nth-last-child(-n + 2) ul li.haschild > a::after {
     content: "\25C1";
     float: left;
     position: absolute;

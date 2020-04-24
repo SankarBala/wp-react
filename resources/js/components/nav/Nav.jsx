@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import $ from "jquery";
 import axios from "axios/dist/axios";
 import { FaBars, FaSearch } from "react-icons/fa";
-import "./Nav.scss";
 
 class Nav extends Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class Nav extends Component {
         .toggle()
         .removeClass("d-none");
     });
+
     $("header, figure, footer, .search-box").click(function() {
       $("#menu").addClass("d-none d-md-block");
     });
@@ -42,7 +42,7 @@ class Nav extends Component {
     if (menu.object) {
       if (menu.child_items) {
         return (
-          <li className="haschild">
+          <li className="haschild" key={menu.ID}>
             {menu.object == "custom" ? (
               <a target="_blank" href={menu.url}>
                 {menu.title}
@@ -62,7 +62,7 @@ class Nav extends Component {
             <ul>
               {menu.child_items.map(submenu =>
                 submenu.child_items ? (
-                  <li className="haschild">
+                  <li className="haschild"  key={submenu.ID}>
                     {submenu.object == "custom" ? (
                       <a target="_blank" href={submenu.url}>
                         {submenu.title}
@@ -83,7 +83,7 @@ class Nav extends Component {
                     )}
                     <ul>
                       {submenu.child_items.map(submenu2 => (
-                        <li>
+                        <li  key={submenu2.ID}>
                           {submenu2.object == "custom" ? (
                             <a target="_blank" href={submenu2.url}>
                               {submenu2.title}
@@ -107,7 +107,7 @@ class Nav extends Component {
                     </ul>
                   </li>
                 ) : (
-                  <li>
+                  <li  key={submenu.ID}>
                     {submenu.object == "custom" ? (
                       <a target="_blank" href={submenu.url}>
                         {submenu.title}
@@ -134,7 +134,7 @@ class Nav extends Component {
         );
       } else {
         return (
-          <li>
+          <li key={menu.ID}>
             {menu.object == "custom" ? (
               <a target="_blank" href={menu.url}>
                 {menu.title}
@@ -171,7 +171,7 @@ class Nav extends Component {
                 <input
                   type="search"
                   className="form-control"
-                  placeholder="What you need?"
+                  placeholder="What are you looking?"
                 />
                 <div className="input-group-append">
                   <div className="input-group-text">

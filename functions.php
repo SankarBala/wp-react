@@ -227,3 +227,4 @@ function posts_custom_column_views( $column ) {
 
 include "api/widget.php";
 include "api/menu.php";
+include "api/logo.php";

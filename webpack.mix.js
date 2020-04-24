@@ -19,6 +19,10 @@ mix
 
 mix.copyDirectory("resources/images", "assets/images");
 
+// mix.disableNotifications();
+
+mix.disableSuccessNotifications();
+
 mix.browserSync({
   ui: {
     port: 3001
