@@ -1,6 +1,7 @@
 /node_modules
-/assets/*
+/assets
 /mix-manifest.json
+/yarn-error.log
 
 
 

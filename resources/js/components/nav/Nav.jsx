@@ -42,7 +42,7 @@ class Nav extends Component {
     if (menu.object) {
       if (menu.child_items) {
         return (
-          <li>
+          <li className="haschild">
             {menu.object == "custom" ? (
               <a target="_blank" href={menu.url}>
                 {menu.title}
@@ -60,29 +60,29 @@ class Nav extends Component {
             )}
 
             <ul>
-              {menu.child_items.map(submenu => (
-                <li>
-                  {submenu.object == "custom" ? (
-                    <a target="_blank" href={submenu.url}>
-                      {submenu.title}
-                    </a>
-                  ) : (
-                    <NavLink
-                      to={{
-                        pathname: submenu.url.replace(
-                          new URL(submenu.url).origin,
-                          ""
-                        ),
-                        object: submenu.object,
-                        object_id: submenu.object_id
-                      }}
-                    >
-                      {submenu.title}
-                    </NavLink>
-                  )}
-                  <ul>
-                    {submenu.child_items ? (
-                      submenu.child_items.map(submenu2 => (
+              {menu.child_items.map(submenu =>
+                submenu.child_items ? (
+                  <li className="haschild">
+                    {submenu.object == "custom" ? (
+                      <a target="_blank" href={submenu.url}>
+                        {submenu.title}
+                      </a>
+                    ) : (
+                      <NavLink
+                        to={{
+                          pathname: submenu.url.replace(
+                            new URL(submenu.url).origin,
+                            ""
+                          ),
+                          object: submenu.object,
+                          object_id: submenu.object_id
+                        }}
+                      >
+                        {submenu.title}
+                      </NavLink>
+                    )}
+                    <ul>
+                      {submenu.child_items.map(submenu2 => (
                         <li>
                           {submenu2.object == "custom" ? (
                             <a target="_blank" href={submenu2.url}>
@@ -103,13 +103,32 @@ class Nav extends Component {
                             </NavLink>
                           )}
                         </li>
-                      ))
+                      ))}
+                    </ul>
+                  </li>
+                ) : (
+                  <li>
+                    {submenu.object == "custom" ? (
+                      <a target="_blank" href={submenu.url}>
+                        {submenu.title}
+                      </a>
                     ) : (
-                      <span />
+                      <NavLink
+                        to={{
+                          pathname: submenu.url.replace(
+                            new URL(submenu.url).origin,
+                            ""
+                          ),
+                          object: submenu.object,
+                          object_id: submenu.object_id
+                        }}
+                      >
+                        {submenu.title}
+                      </NavLink>
                     )}
-                  </ul>
-                </li>
-              ))}
+                  </li>
+                )
+              )}
             </ul>
           </li>
         );
@@ -143,7 +162,9 @@ class Nav extends Component {
         <nav className="">
           <div className="row d-md-none sm-nav bg-danger">
             <div className="menu-bar col-2 text-center">
-              <h4><FaBars id="menu-toggler"/></h4>
+              <h4>
+                <FaBars id="menu-toggler" />
+              </h4>
             </div>
             <div className="col-10 search-box">
               <div className="input-group">
@@ -155,8 +176,8 @@ class Nav extends Component {
                 <div className="input-group-append">
                   <div className="input-group-text">
                     <button>
-						<FaSearch />
-					</button>
+                      <FaSearch />
+                    </button>
                   </div>
                 </div>
               </div>

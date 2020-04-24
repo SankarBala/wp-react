@@ -16,7 +16,7 @@ import {siteUrl} from "./config";
 
 ReactDOM.render(
   <Provider store={Store}>
-    <Router basename={siteUrl}>
+    <Router basename={siteUrl}> 
       <Index />
     </Router>
   </Provider>,

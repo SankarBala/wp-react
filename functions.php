@@ -220,7 +220,7 @@ function posts_column_views( $columns ) {
 function posts_custom_column_views( $column ) {
     if ( $column === 'post_views') {
         echo get_post_view();
-    }
+    };
 }
 
 // Additional api to get menu, sidebar and widget data which is not provided to wordpress;

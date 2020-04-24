@@ -35,7 +35,7 @@ if ($object->taxonomy) {
 }
 ?>
 
-<meta name="siteUrl" content="<?php echo parse_url(site_url(), PHP_URL_PATH); ?>" />
+<meta name="siteUrl" content="<?php echo parse_url(site_url(), PHP_URL_PATH).'/'; ?>" />
 <meta name="render" content="<?php echo $requestedTo->render; ?>" />
 <meta name="id" content="<?php echo $requestedTo->id; ?>" />
 <meta name="day" content="<?php echo $requestedTo->day; ?>" />
@@ -48,17 +48,16 @@ if ($object->taxonomy) {
     <?php wp_head(); ?>
     
 </head>
-
+  
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
     <noscript>You must enable javascript to visit the website</noscript>
 
     <div id="root"></div>
-
+    
     <script src="<?php bloginfo('template_directory'); ?>/assets/js/app.js"></script>
     <?php wp_footer(); ?>
-
 </body>
 
 </html>

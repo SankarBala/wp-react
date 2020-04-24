@@ -26,7 +26,7 @@ nav {
   width: 31vw;
   background: #4e4e4e;
   border-bottom: 0px solid transparent;
-  min-height: 50px;
+  // min-height: 50px;
   z-index: 9999;
   font-size: 2.3vw;
 }
@@ -100,7 +100,11 @@ nav {
 }
 
 .haschild::after {
-  content: "\25B6";
+  content: none;
+}
+
+li.haschild>a::after {
+  content: "\25B7";
   float: right;
 }
 
@@ -114,7 +118,7 @@ nav {
     width: 100%;
     background: #4e4e4e;
     border-bottom: 5px solid orange;
-    min-height: 50px;
+    // min-height: 50px;
     margin: 0 auto;
     font-size: 1rem;
   }
@@ -138,7 +142,7 @@ nav {
     color: #fff;
     text-decoration: none;
     background: #4e4e4e;
-    padding: 10px 20px;
+    padding: 7px 20px;
     display: block;
     transition: 0.2s all ease;
   }
@@ -156,7 +160,7 @@ nav {
 
   #menu li:hover ul {
     left: 0;
-    top: 45px;
+    top: 38px;
   }
 
   #menu li ul li {
@@ -184,17 +188,21 @@ nav {
     left: -220px;
   }
 
-  .haschild::after {
+  .haschild a::after {
+    content: none;
+  }
+  
+  li.haschild a::after {
     content: none;
   }
 
-  #menu li ul li .haschild::after {
-    content: "\25b6";
+  #menu li ul li.haschild a::after {
+    content: "\25B7";
     float: right;
   }
 
-  #menu li:nth-last-child(-n + 2) ul li .haschild::after {
-    content: "\25c0";
+  #menu li:nth-last-child(-n + 2) ul li.haschild a::after {
+    content: "\25C1";
     float: left;
     position: absolute;
     left: 0px;
